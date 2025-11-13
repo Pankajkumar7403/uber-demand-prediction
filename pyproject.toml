@@ -1,0 +1,32 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "uber_demand_predication"
+version = "0.0.1"
+description = "This project help to predict the demand in a specific region in given time frame."
+authors = [
+  { name = "Pankaj Kumar" },
+]
+
+readme = "README.md"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    
+]
+requires-python = "~=3.10.0"
+
+
+[tool.ruff]
+line-length = 99
+src = ["uber_demand_predication"]
+include = ["pyproject.toml", "uber_demand_predication/**/*.py"]
+
+[tool.ruff.lint]
+extend-select = ["I"]  # Add import sorting
+
+[tool.ruff.lint.isort]
+known-first-party = ["uber_demand_predication"]
+force-sort-within-sections = true
+
