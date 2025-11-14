@@ -87,6 +87,8 @@ docs/site/
 .pybuilder/
 target/
 
+/data/processed/
+/models/
 # Jupyter Notebook
 .ipynb_checkpoints
 
@@ -189,3 +191,4 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+/run_information.json

@@ -1,0 +1,56 @@
+stages:
+  data_ingestion:
+    cmd: python ./uber_demand_predication/data/data_ingestion.py
+    deps:
+      - ./uber_demand_predication/data/data_ingestion.py
+
+  extract_features:
+    cmd: python ./uber_demand_predication/features/extract_features.py
+    deps: 
+      - ./uber_demand_predication/features/extract_features.py
+      - ./data/interim/df_without_outliers.csv
+      - ./params.yaml
+    params: 
+      - extract_features.mini_batch_kmeans.n_clusters
+      - extract_features.mini_batch_kmeans.n_init
+      - extract_features.mini_batch_kmeans.random_state
+      - extract_features.ewma.alpha
+    outs:
+      - data/processed/resampled_data.csv
+      - models/scaler.joblib
+      - models/mb_kmeans.joblib
+
+  feature_processing:
+    cmd: python ./uber_demand_predication/features/feature_processing.py
+    deps:
+      - ./uber_demand_predication/features/feature_processing.py
+      - ./data/processed/resampled_data.csv
+    outs:
+      - ./data/processed/train.csv
+      - ./data/processed/test.csv
+
+  train:
+    cmd: python ./uber_demand_predication/models/train.py
+    deps:
+      - ./uber_demand_predication/models/train.py
+      - ./data/processed/train.csv
+    outs:
+      - ./models/encoder.joblib
+      - ./models/model.joblib
+
+  evaluate:
+    cmd: python ./uber_demand_predication/models/evaluate.py
+    deps:
+      - ./uber_demand_predication/models/evaluate.py
+      - ./models/encoder.joblib
+      - ./models/model.joblib
+      - ./data/processed/test.csv
+      - ./data/processed/train.csv
+    outs:
+      - ./run_information.json
+
+  register_model:
+    cmd: python ./uber_demand_predication/models/register_model.py
+    deps:
+      - ./uber_demand_predication/models/register_model.py
+      - ./run_information.json
