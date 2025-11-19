@@ -55,8 +55,8 @@ if __name__ == "__main__":
     
     logger.info(f"Model registered successfully with version: {model_version} and name: {model_name}")
     
-    # move the registered model to staging stage
-    model_stage = "Staging"
+    # move the registered model to production stage
+    model_stage = "Production"
     
     client = MlflowClient()
     
