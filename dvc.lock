@@ -107,14 +107,14 @@ stages:
     outs:
     - path: ./run_information.json
       hash: md5
-      md5: 277c58a808465794b101cb78252acd74
+      md5: 97451854568001ee5e4b9b6ed571f743
       size: 175
   register_model:
     cmd: python ./uber_demand_predication/models/register_model.py
     deps:
     - path: ./run_information.json
       hash: md5
-      md5: 277c58a808465794b101cb78252acd74
+      md5: 97451854568001ee5e4b9b6ed571f743
       size: 175
     - path: ./uber_demand_predication/models/register_model.py
       hash: md5
