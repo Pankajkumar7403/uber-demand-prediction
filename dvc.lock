@@ -35,12 +35,12 @@ stages:
       size: 8480304
     - path: models/mb_kmeans.joblib
       hash: md5
-      md5: bc07e0073d90552fae46795f72ef880f
+      md5: 2721e625efa519cff41fd37846d2c73b
       size: 143771
     - path: models/scaler.joblib
       hash: md5
-      md5: f4821d98fd527b1d9d9daf03d9d64e27
-      size: 951
+      md5: b018f036d9481c012637214736b80c05
+      size: 999
   feature_processing:
     cmd: python ./uber_demand_predication/features/feature_processing.py
     deps:
@@ -75,12 +75,12 @@ stages:
     outs:
     - path: ./models/encoder.joblib
       hash: md5
-      md5: 11301a7f31bda9a1387017930159a1e3
-      size: 3207
+      md5: 968b7aec9335d7dc07aac6ba89841a22
+      size: 3493
     - path: ./models/model.joblib
       hash: md5
-      md5: d6e6a55cc1bd18032e97d524e1df297c
-      size: 2169
+      md5: 9eac09d1e9084a7016ef30441b608b49
+      size: 2345
   evaluate:
     cmd: python ./uber_demand_predication/models/evaluate.py
     deps:
@@ -94,12 +94,12 @@ stages:
       size: 9609288
     - path: ./models/encoder.joblib
       hash: md5
-      md5: 11301a7f31bda9a1387017930159a1e3
-      size: 3207
+      md5: 968b7aec9335d7dc07aac6ba89841a22
+      size: 3493
     - path: ./models/model.joblib
       hash: md5
-      md5: d6e6a55cc1bd18032e97d524e1df297c
-      size: 2169
+      md5: 9eac09d1e9084a7016ef30441b608b49
+      size: 2345
     - path: ./uber_demand_predication/models/evaluate.py
       hash: md5
       md5: 015b481573af1e94d0c46bc28b547c23
@@ -107,16 +107,16 @@ stages:
     outs:
     - path: ./run_information.json
       hash: md5
-      md5: 6f74583f1f4906dc7b6c48202f6008c1
+      md5: 277c58a808465794b101cb78252acd74
       size: 175
   register_model:
     cmd: python ./uber_demand_predication/models/register_model.py
     deps:
     - path: ./run_information.json
       hash: md5
-      md5: 6f74583f1f4906dc7b6c48202f6008c1
+      md5: 277c58a808465794b101cb78252acd74
       size: 175
     - path: ./uber_demand_predication/models/register_model.py
       hash: md5
-      md5: adf1f21f4cf7f0910056a6e70f4fd93a
-      size: 2499
+      md5: 998ce2ae097a63d19b8b2505cfd659e9
+      size: 2434
