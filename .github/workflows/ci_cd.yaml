@@ -92,6 +92,6 @@ jobs:
             --application-name uber-demand-prediction \
             --deployment-config-name CodeDeployDefault.OneAtATime \
             --deployment-group-name uber-demand-prediction-deployment-group \
-            --s3-location bucket=demandpredictiondeployment,key=deployment.zip,bundleType=zip \
+            --s3-location bucket=demandpredictiondeployment74,key=deployment.zip,bundleType=zip \
             --file-exists-behavior OVERWRITE \
             --region ap-south-1
